@@ -33,7 +33,9 @@ Template.add.events({
     // Insert note into collection
     Notes.insert({
       text,
-      createdAt: new Date()
+      createdAt: new Date(),
+      owner : Meteor.userId(),
+      username : Meteor.user().username
     })
 
     // clear form
