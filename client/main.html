@@ -1,7 +1,9 @@
 <head>
   <title>Note Manager</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 
 <body>
@@ -41,7 +43,10 @@
 </body>
 
 <template name="note">
-  <li class="collection-items">{{text}}</li>
+  <li class="collection-items">
+    {{text}}
+    <a href="#!" class="delete-note secondary-content"><i class="material-icons" id ="delete">close</i></a>
+  </li>
 </template>
 
 <template name="add">
