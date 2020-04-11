@@ -14,4 +14,31 @@ Template.body.helpers({
  notes(){
    return Notes.find({});
  }
-})
+});
+
+Template.add.events({
+  'submit .add-form': function(){
+    event.preventDefault();
+
+    // Get input value
+    const target= event.target;
+    const text = target.text.value;
+    
+    // Insert note into collection
+    Notes.insert({
+      text,
+      createdAt: new Date()
+    })
+
+    // clear form
+    target.text.value='';
+    
+    // close modal
+    // var elem = document.getElementsByClassName("modal");
+    // var instance = M.Modal.getInstance(elem);
+    // instance.close();
+    $('#addModal').modal('close');
+    
+    return false;
+  }
+});
