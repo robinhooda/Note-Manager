@@ -1,5 +1,11 @@
 import { Template } from 'meteor/templating';
 import { Notes } from '../lib/collection.js';
+import { Accounts } from "meteor/accounts-base";
+
+// Acoounts config
+Accounts.ui.config({
+  passwordSignupFields : 'USERNAME_ONLY'
+});
 
 import './main.html';
 
@@ -12,7 +18,7 @@ Template.body.helpers({
   ]
 */
  notes(){
-   return Notes.find({});
+   return Notes.find({}, { sort: { createdAt: -1 } });
  }
 });
 
