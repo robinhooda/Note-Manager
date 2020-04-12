@@ -31,20 +31,19 @@ Template.add.events({
     const text = target.text.value;
     
     // Insert note into collection
-    Notes.insert({
-      text,
-      createdAt: new Date(),
-      owner : Meteor.userId(),
-      username : Meteor.user().username
+    /*  Notes.insert({
+        text,
+        createdAt: new Date(),
+        owner : Meteor.userId(),
+        username : Meteor.user().username
     })
+    */
+   Meteor.call('notes.insert',text);
 
     // clear form
     target.text.value='';
     
     // close modal
-    // var elem = document.getElementsByClassName("modal");
-    // var instance = M.Modal.getInstance(elem);
-    // instance.close();
     $('#addModal').modal('close');
     
     return false;
@@ -53,7 +52,8 @@ Template.add.events({
 
 Template.note.events({
   'click .delete-note':function(){
-    Notes.remove(this._id);
+    // Notes.remove(this._id);
+    Meteor.call('notes.remove',this);
     return false;
   }
 })
